@@ -1,7 +1,7 @@
 //types
 
 // Post APIs
-import { Post } from './types';
+import { Post, User } from './types';
 export interface ListPostsRequest {}
 export interface ListPostsResponse {
   posts: Post[];
@@ -19,3 +19,19 @@ export interface getPostResponse {
 // Like APIs
 
 // User APIs
+
+export type SignUpRequest = Pick<
+  User,
+  'email' | 'firstName' | 'lastName' | 'username' | 'email' | 'password'
+>;
+
+export interface SignUpResponse {}
+export interface SignInRequest {
+  login: string;
+  password: string;
+}
+
+export type SignInResponse = Pick<
+  User,
+  'email' | 'firstName' | 'lastName' | 'username' | 'id'
+>;
