@@ -6,7 +6,7 @@ export interface ListPostsRequest {}
 export interface ListPostsResponse {
   posts: Post[];
 }
-export type createPostRequest = Pick<Post, 'title' | 'url' | 'userId'>;
+export type createPostRequest = Pick<Post, 'title' | 'url'>;
 export interface createPostResponse {}
 
 export interface getPostRequest {}
@@ -25,13 +25,15 @@ export type SignUpRequest = Pick<
   'email' | 'firstName' | 'lastName' | 'username' | 'email' | 'password'
 >;
 
-export interface SignUpResponse {}
+export interface SignUpResponse {
+  jwt: string;
+}
 export interface SignInRequest {
   login: string;
   password: string;
 }
 
-export type SignInResponse = Pick<
-  User,
-  'email' | 'firstName' | 'lastName' | 'username' | 'id'
->;
+export type SignInResponse = {
+  user: Pick<User, 'email' | 'firstName' | 'lastName' | 'username' | 'id'>;
+  jwt: string;
+};

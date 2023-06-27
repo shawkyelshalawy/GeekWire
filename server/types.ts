@@ -21,17 +21,25 @@ export interface Like {
   postId: string;
 }
 
-export type ExpressHandler<Req, Res> = RequestHandler<
-  string,
-  Partial<Res>,
-  Partial<Req>,
-  any
->;
-
 export interface Comment {
   id: string;
   userId: string;
   postId: string;
   comment: string;
   postedAt: number;
+}
+
+export interface jwtObject {
+  userId: string;
+}
+
+export type ExpressHandler<Req, Res> = RequestHandler<
+  string,
+  Partial<withError<Res>>,
+  Partial<Req>,
+  any
+>;
+export type withError<T> = T & { error: string };
+export interface JwtObject {
+  userId: string;
 }
